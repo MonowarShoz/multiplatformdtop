@@ -7,6 +7,7 @@ class CalendarsDemo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChicagoApp(
+      showdeb: false,
       home: ColoredBox(
         color: const Color(0xffdddcd5),
         child: Rollup(

@@ -58,112 +58,128 @@ class _DesktopHomeState extends State<DesktopHome> with WindowListener {
 
   @override
   Widget build(BuildContext context) {
-    return NavigationView(
-      // appBar: const NavigationAppBar(
-      //   title: Text('NavigationView'),
-      // ),
-      pane: NavigationPane(
-        selected: topIndex,
-        onChanged: (index) => setState(() => topIndex = index),
-        displayMode: PaneDisplayMode.compact,
-        indicator: EndNavigationIndicator(
-          color: Colors.blue,
-        ),
-        items: [
-          PaneItem(
-            icon: const Icon(FluentIcons.home),
-            title: const Text('Dashboard'),
-            body: ImgScreen(),
+    return ColoredBox(
+      color: Colors.red,
+      child: NavigationView(
+        // appBar: const NavigationAppBar(
+        //   title: Text('NavigationView'),
+        // ),
+        pane: NavigationPane(
+          selected: topIndex,
+          onChanged: (index) => setState(() => topIndex = index),
+          displayMode: PaneDisplayMode.compact,
+          indicator: EndNavigationIndicator(
+            color: Colors.white,
           ),
+          items: [
+            PaneItem(
+              icon: const Icon(FluentIcons.home),
+              title: const Text('Dashboard'),
+              body: ImgScreen(),
+            ),
 
-          PaneItemExpander(
-              icon: Icon(FluentIcons.account_activity),
-              title: Text('General Information'),
+            PaneItemExpander(
+                selectedTileColor: ButtonState.all<Color>(Color.fromARGB(255, 107, 145, 215)),
+                trailing: Icon(
+                  mt.Icons.arrow_back_ios,
+                  color: Colors.white,
+                ),
+                icon: Icon(
+                  FluentIcons.account_activity,
+                  color: Colors.white,
+                ),
+                title: Text('General Information'),
+                items: [
+                  PaneItem(
+                    icon: const Icon(FluentIcons.issue_tracking),
+                    title: const Text('ADC Information'),
+                    // infoBadge: const InfoBadge(source: Text('8')),
+                    body: Text('ADC Information'),
+                  ),
+                  PaneItem(
+                    icon: const Icon(FluentIcons.area_chart),
+                    title: const Text('Thana Information'),
+                    //infoBadge: const InfoBadge(source: Text('8')),
+                    body: Text('Thana Information'),
+                  ),
+                  PaneItem(
+                    icon: Icon(FluentIcons.people_repeat),
+                    title: const Text('Kormi Information'),
+                    // infoBadge: const InfoBadge(source: Text('8')),
+                    body: KormiInfoScreen(),
+                  ),
+                ],
+                body: Text('custom')),
+
+            PaneItemExpander(
+              selectedTileColor: ButtonState.all<Color>(Color.fromARGB(255, 107, 145, 215)),
+              trailing: Icon(
+                mt.Icons.arrow_back_ios,
+                color: Colors.white,
+              ),
+              icon: Icon(FluentIcons.report_document),
+              title: Text('Reports'),
               items: [
                 PaneItem(
                   icon: const Icon(FluentIcons.issue_tracking),
-                  title: const Text('ADC Information'),
+                  title: const Text('Loan Reports'),
                   // infoBadge: const InfoBadge(source: Text('8')),
-                  body: Text('ADC Information'),
+                  body: CalendarsDemo(),
                 ),
                 PaneItem(
                   icon: const Icon(FluentIcons.area_chart),
-                  title: const Text('Thana Information'),
+                  title: const Text('Savings Report'),
                   //infoBadge: const InfoBadge(source: Text('8')),
-                  body: Text('Thana Information'),
+                  body: PssReporScreen(),
                 ),
                 PaneItem(
                   icon: Icon(FluentIcons.people_repeat),
-                  title: const Text('Kormi Information'),
+                  title: const Text('Accounting Reports'),
                   // infoBadge: const InfoBadge(source: Text('8')),
                   body: KormiInfoScreen(),
                 ),
               ],
-              body: Text('custom')),
+              body: Text('custom'),
+            ),
 
-          PaneItemExpander(
-            icon: Icon(FluentIcons.report_document),
-            title: Text('Reports'),
-            items: [
-              PaneItem(
-                icon: const Icon(FluentIcons.issue_tracking),
-                title: const Text('Loan Reports'),
-                // infoBadge: const InfoBadge(source: Text('8')),
-                body: CalendarsDemo(),
-              ),
-              PaneItem(
-                icon: const Icon(FluentIcons.area_chart),
-                title: const Text('Savings Report'),
-                //infoBadge: const InfoBadge(source: Text('8')),
-                body: PssReporScreen(),
-              ),
-              PaneItem(
-                icon: Icon(FluentIcons.people_repeat),
-                title: const Text('Accounting Reports'),
-                // infoBadge: const InfoBadge(source: Text('8')),
-                body: KormiInfoScreen(),
-              ),
-            ],
-            body: Text('custom'),
-          ),
+            // PaneItem(
+            //   icon: const Icon(FluentIcons.issue_tracking),
+            //   title: const Text('Track an order'),
+            //   // infoBadge: const InfoBadge(source: Text('8')),
+            //   body: Text('track'),
+            // ),
 
-          // PaneItem(
-          //   icon: const Icon(FluentIcons.issue_tracking),
-          //   title: const Text('Track an order'),
-          //   // infoBadge: const InfoBadge(source: Text('8')),
-          //   body: Text('track'),
-          // ),
-
-          // PaneItem(
-          //   icon: const Icon(FluentIcons.issue_tracking),
-          //   title: const Text('Track an order'),
-          //   //infoBadge: const InfoBadge(source: Text('8')),
-          //   body: Text('track'),
-          // ),
-          // PaneItem(
-          //   icon: const Icon(FluentIcons.issue_tracking),
-          //   title: const Text('Track an order'),
-          //   // infoBadge: const InfoBadge(source: Text('8')),
-          //   body: Text('track'),
-          // ),
-          // PaneItemExpander(
-          //   icon: const Icon(FluentIcons.account_management),
-          //   title: const Text('Account'),
-          //   body: Text('Account'),
-          //   items: [
-          //     PaneItem(
-          //       icon: const Icon(FluentIcons.mail),
-          //       title: const Text('Mail'),
-          //       body: Text('Mail'),
-          //     ),
-          //     PaneItem(
-          //       icon: const Icon(FluentIcons.calendar),
-          //       title: const Text('Calendar'),
-          //       body: Text('Calender'),
-          //     ),
-          //   ],
-          // ),
-        ],
+            // PaneItem(
+            //   icon: const Icon(FluentIcons.issue_tracking),
+            //   title: const Text('Track an order'),
+            //   //infoBadge: const InfoBadge(source: Text('8')),
+            //   body: Text('track'),
+            // ),
+            // PaneItem(
+            //   icon: const Icon(FluentIcons.issue_tracking),
+            //   title: const Text('Track an order'),
+            //   // infoBadge: const InfoBadge(source: Text('8')),
+            //   body: Text('track'),
+            // ),
+            // PaneItemExpander(
+            //   icon: const Icon(FluentIcons.account_management),
+            //   title: const Text('Account'),
+            //   body: Text('Account'),
+            //   items: [
+            //     PaneItem(
+            //       icon: const Icon(FluentIcons.mail),
+            //       title: const Text('Mail'),
+            //       body: Text('Mail'),
+            //     ),
+            //     PaneItem(
+            //       icon: const Icon(FluentIcons.calendar),
+            //       title: const Text('Calendar'),
+            //       body: Text('Calender'),
+            //     ),
+            //   ],
+            // ),
+          ],
+        ),
       ),
     );
   }

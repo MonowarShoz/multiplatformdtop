@@ -111,6 +111,14 @@ class MyApp extends StatelessWidget {
               theme: ft.FluentThemeData(
                   accentColor: appTheme.color,
                   cardColor: Colors.black,
+                  navigationPaneTheme: ft.NavigationPaneThemeData(
+                      backgroundColor: ft.Color.fromARGB(255, 44, 66, 113),
+                      unselectedTextStyle: ft.ButtonState.all<TextStyle>(TextStyle(color: Colors.white)),
+                      selectedTextStyle: ft.ButtonState.all<TextStyle>(TextStyle(color: ft.Color.fromARGB(255, 231, 229, 229))),
+                      highlightColor: Colors.white
+
+                      //  tileColor: ft.ButtonState.all<Color>(Colors.blue),
+                      ),
                   visualDensity: VisualDensity.standard,
                   focusTheme: ft.FocusThemeData(glowFactor: ft.is10footScreen() ? 2.0 : 0.0)),
               home: AuthPage(),
