@@ -6,14 +6,13 @@ import 'package:multiplatformdtop/util/custom_themes.dart';
 import 'package:multiplatformdtop/view/desktop_view/auth.dart';
 import 'package:multiplatformdtop/view/desktop_view/dt_home_page.dart';
 import 'package:multiplatformdtop/view/mobile_view/mb_home_page.dart';
+import 'package:pfmscodepack/pfmscodepack.dart' as pf;
 import 'package:provider/provider.dart';
 import 'package:window_manager/window_manager.dart';
 import 'package:flutter_acrylic/flutter_acrylic.dart' as flutter_acrylic;
 import 'package:system_theme/system_theme.dart';
-import 'Data/Provider/pss_report_provider.dart';
+
 import 'di_container.dart' as di;
-import 'Data/Provider/kormi_information_provider.dart';
-import 'Data/Provider/user_config_provider.dart';
 
 bool get isDesktop {
   if (kIsWeb) return false;
@@ -38,16 +37,17 @@ void main() async {
   if (isDesktop) {
     await flutter_acrylic.Window.initialize();
 
-    // windowManager.waitUntilReadyToShow().then((_) async {
-    //   await windowManager.setTitle('Sample APP');
-    //   await windowManager.setTitleBarStyle(TitleBarStyle.normal);
-    //   await windowManager.setBackgroundColor(Colors.black);
-    //   await windowManager.setSize(const Size(755, 545));
-    //   await windowManager.setMinimumSize(const Size(755, 545));
-    //   await windowManager.center();
-    //   await windowManager.show();
-    //   await windowManager.setSkipTaskbar(false);
-    // });
+    windowManager.waitUntilReadyToShow().then((_) async {
+      await windowManager.setTitle('Sample APP');
+      await windowManager.setTitleBarStyle(TitleBarStyle.normal);
+      await windowManager.setBackgroundColor(Colors.black);
+      await windowManager.setSize(const Size(1200, 545));
+      await windowManager.setMinimizable(false);
+      await windowManager.setMinimumSize(const Size(1200, 545));
+
+      await windowManager.show();
+      await windowManager.setSkipTaskbar(false);
+    });
 
     // WindowOptions windowOptions = const WindowOptions(
     //   size: Size(800, 600),
@@ -74,11 +74,11 @@ void main() async {
   }
 
   runApp(MultiProvider(providers: [
-    ChangeNotifierProvider(create: (context) => di.sl<UserConfigProvider>()),
-    ChangeNotifierProvider(create: (context) => di.sl<KormiInformationProvider>()),
-    ChangeNotifierProvider(create: (context) => di.sl<PssReportProvider>()),
+    ChangeNotifierProvider(create: (context) => di.sl<pf.UserConfigProvider>()),
+    ChangeNotifierProvider(create: (context) => di.sl<pf.KormiInformationProvider>()),
+    ChangeNotifierProvider(create: (context) => di.sl<pf.PssReportProvider>()),
     // ChangeNotifierProvider(create: (context) => di.sl<AdcInformationProvider>()),
-    // ChangeNotifierProvider(create: (context) => di.sl<AreaInformationProvider>()),
+    ChangeNotifierProvider(create: (context) => di.sl<pf.AreaInformationProvider>()),
     // ChangeNotifierProvider(
     //   create: (context) => di.sl<ChBankAccountProvider>(),
 
@@ -112,10 +112,14 @@ class MyApp extends StatelessWidget {
                   accentColor: appTheme.color,
                   cardColor: Colors.black,
                   navigationPaneTheme: ft.NavigationPaneThemeData(
-                      backgroundColor: ft.Color.fromARGB(255, 44, 66, 113),
-                      unselectedTextStyle: ft.ButtonState.all<TextStyle>(TextStyle(color: Colors.white)),
-                      selectedTextStyle: ft.ButtonState.all<TextStyle>(TextStyle(color: ft.Color.fromARGB(255, 231, 229, 229))),
-                      highlightColor: Colors.white
+                      backgroundColor: ft.Color.fromARGB(255, 181, 222, 204),
+                      selectedIconColor: ft.ButtonState.all<Color>(Colors.black),
+                      unselectedIconColor: ft.ButtonState.all<Color>(Colors.black),
+                      // backgroundColor: ft.Color.fromARGB(255, 44, 66, 113),
+                      unselectedTextStyle: ft.ButtonState.all<TextStyle>(TextStyle(color: Colors.black)),
+                      selectedTextStyle: ft.ButtonState.all<TextStyle>(TextStyle(color: ft.Color.fromARGB(255, 39, 28, 28))),
+                      // selectedTextStyle: ft.ButtonState.all<TextStyle>(TextStyle(color: ft.Color.fromARGB(255, 231, 229, 229))),
+                      highlightColor: Colors.grey
 
                       //  tileColor: ft.ButtonState.all<Color>(Colors.blue),
                       ),
