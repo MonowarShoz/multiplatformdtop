@@ -67,7 +67,7 @@ class _DesktopHomeState extends State<DesktopHome> with WindowListener {
         pane: NavigationPane(
           selected: topIndex,
           onChanged: (index) => setState(() => topIndex = index),
-          displayMode: PaneDisplayMode.open,
+          displayMode: PaneDisplayMode.top,
           size: NavigationPaneSize(
             openWidth: 200,
           ),
