@@ -1,6 +1,6 @@
 # multiplatformdtop
 
-A new Flutter project.
+Desktop app in Flutter using Fluent Ui package
 
 ## Getting Started
 
